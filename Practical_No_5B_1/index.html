@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <title>Computer Science Blog</title>
+</head>
+
+<body>
+    <header>
+        <h1>How to put machine learning models into production</h1>
+        <h2>
+            The goal of building a machine learning model is to solve a problem, and a machine learning model can only
+            do so when it is in production.
+        </h2>
+    </header>
+    <hr />
+
+    <article>
+        <h1>From model to production
+        </h1>
+        <section>
+            <p>
+                Many teams embark on machine learning projects without a production plan, an approach that often leads
+                to serious problems when it’s time to deploy. It is both expensive and time-consuming to create models,
+                and you should not invest in an ML project if you have no plan to put it in production, except of course
+                when doing pure research. With a plan in hand, you won’t be surprised by any pitfalls that could derail
+                your launch.
+                <br />
+                <br />
+                There are three key areas your team needs to consider before embarking on any ML projects are:
+                <br />
+                <br />
+                <strong>Data storage and retrieval</strong><br />
+                <strong>Frameworks and tooling </strong> <br />
+                <strong>Feedback and iteration</strong>
+            </p>
+        </section>
+        <section>
+
+            <h3>Data storage and retrieval</h3>
+            <p>
+                Data can be stored in on-premise, in cloud storage, or in a hybrid of the two. It makes sense to store
+                your data where the model training will occur and the results will be served: on-premise model training
+                and serving will be best suited for on-premise data especially if the data is large, while data stored
+                in cloud storage systems like<em> GCS </em>, <em>AWS S3</em> , or <em>Azure</em> storage should be
+                matched with cloud ML training and
+                serving.
+            </p>
+            <p>
+                The size of your data also matters a lot. If your dataset is large, then you need more computing power
+                for preprocessing steps as well as model optimization phases. This means you either have to plan for
+                more compute if you’re operating locally, or set up auto-scaling in a cloud environment from the start.
+                Remember, either of these can get expensive if you haven’t thought through your data needs, so pre-plan
+                to make sure your budget can support the model through both training and production
+            </p>
+            <p>
+                Even if you have your training data stored together with the model to be trained, you still need to
+                consider how that data will be retrieved and processed. Here the question of batch vs. real-time data
+                retrieval comes to mind, and this has to be considered before designing the ML system. Batch data
+                retrieval means that data is retrieved in chunks from a storage system while real-time data retrieval
+                means that data is retrieved as soon as it is available
+            </p>
+            <p>
+                Raising and answering questions relating to data storage and retrieval is important and will get you
+                thinking about the right way to design your ML project.
+            </p>
+        </section>
+
+        <section>
+            <h3>Frameworks and tooling </h3>
+            <p>
+                Your model isn’t going to train, run, and deploy itself. For that, you need frameworks and tooling,
+                software and hardware that help you effectively deploy ML models. These can be frameworks like
+                Tensorflow, Pytorch, and Scikit-Learn for training models, programming languages like
+                <strong>Python</strong>, <strong>Java</strong>, and<strong>
+                    Go</strong>, and even cloud environments like AWS, GCP, and Azure.
+                <br />
+                After examining and preparing your use of data, the next line of thinking should consider what
+                combination of frameworks and tools to use.
+            </p>
+            <p>
+                The choice of framework is very important, as it can decide the continuity, maintenance, and use of a
+                model.To help determine the best tool for the task, you should research and compare findings for
+                different tools that perform the same job. For instance, you can compare these tools based on criteria
+                like:
+            </p>
+            <p>
+                <strong>Efficiency:</strong> How efficient is the framework or tool in production? A framework or tool
+                is efficient if it optimally uses resources like memory, CPU, or time. It is important to consider the
+                efficiency of Frameworks or tools you intend to use because they have a direct effect on project
+                performance, reliability, and stability.
+                <br />
+                <strong>Popularity</strong>: How popular is the tool in the developer community? Popularity often means
+                it works well, is actively in use, and has a lot of support. It is also worth mentioning that there may
+                be newer tools that are less popular but more efficient than popular ones, especially for closed-source,
+                proprietary tools. You’ll need to weigh that when picking a proprietary tool to use. Generally, in open
+                source projects, you’d lean to popular and more mature tools for reasons I’ll discuss below.
+                <br />
+                <strong>Support</strong>: How is support for the framework or tool? Does it have a vibrant community
+                behind it if it is open-sourced, or does it have good support for closed-source tools?How fast can you
+                find tips, tricks, tutorials, and other use cases in actual projects?
+            </p>
+            <p>
+                One more question you need to answer is how many platforms/targets does your choice of framework
+                support? That is, does your choice of framework support popular platforms like the web or mobile
+                environments? Does it run on Windows, Linux, or Mac OS? Is it easy to customize or implement in this
+                target environment? These questions are important as there can be many tools available to research and
+                experiment on a project, but few tools that adequately support your model while in production.
+            </p>
+
+        </section>
+
+        <section>
+            <h3>Feedback and iteration </h3>
+            <p>
+                ML projects are never static. This is part of engineering and design that must be considered from the
+                start.
+            </p>
+            <p>
+                Getting feedback from a model in production is very important. Actively tracking and monitoring model
+                state can warn you in cases of model performance depreciation/decay, bias creep, or even data skew and
+                drift. This will ensure that such problems are quickly addressed before the end-user notices.
+            </p>
+            <p>
+                Consider how to experiment on, retrain, and deploy new models in production without bringing that model
+                down or otherwise interrupting its operation. A new model should be properly tested before it is used to
+                replace the old one. This idea of continuous testing and deploying new models without interrupting the
+                existing model processes is called continuous integration.
+            </p>
+            <p>
+                There are many other issues when getting a model into production, and this article is not law, but I’m
+                confident that most of the questions you’ll ask falls under one of the categories stated above.
+            </p>
+            <p>
+                As such, design systems come with clear documentation for developers
+                on many of these topics under their
+                <em>Getting Started for Engineers</em> section. This helps onboard
+                first-time developers. There are several other engineering issues that
+                design systems can help solve—JavaScript polyfills, support for Vue or
+                React frameworks, distributing library assets using a CDN, SCSS
+                post-processing or overrides, built-in accessibility, and so on. The
+                point is that the design system goes far beyond the visual guidelines.
+                Supporting engineering tasks is a part of what a design system does.
+            </p>
+        </section>
+        <section>
+            <h3>
+                Conclusion
+            </h3>
+            <p>
+                Effectively putting an ML model in production does not have to be hard if all the boxes are ticked
+                before embarking on a project. This is very important in an ML project you’ll embark on and should be
+                prioritized!
+            </p>
+            <p>
+                While this post is not exhaustive, I hope it has provided you with a guide and intuition on how to
+                approach an ML project to put it in production.
+                <br />
+
+
+                Thanks for reading! See you again another time.
+            </p>
+        </section>
+
+
+        <em>Tags: data science, machine learning, tensorflow</em>
+    </article>
+
+    <aside>
+        <address>
+            <h4>
+                Blog by
+                <a href="https://stackoverflow.blog/author/rising-odegua/">Rising Odegua</a>
+            </h4>
+        </address>
+    </aside>
+    <hr />
+
+    <footer>
+        <h3>Related Blog/stuff's</h3>
+        <h4>
+            <a
+                href="https://blog.tensorflow.org/search?label=TFX&max-results=20">Tensorflow Blog</a>
+        </h4>
+        <h4>
+            <a
+                href="https://www.tensorflow.org/tfx">TensorFlow Extended (TFX) | ML Production Pipelines</a>
+        </h4>
+        <h4>
+            <a href="https://www.techrepublic.com/article/how-to-decide-if-open-source-or-proprietary-software-solutions-are-best-for-your-business/">How to decide if open source or proprietary software solutions are best for your business</a>
+        </h4>
+
+    </footer>
+</body>
+
+</html>
