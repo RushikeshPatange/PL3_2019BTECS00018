@@ -1,0 +1,16 @@
+h1,
+h3 {
+ text-align: center;
+}
+table {
+  margin: 20px auto;
+ }
+table,th,td
+ {
+ text-align: center;
+ border: 1px solid black;
+}
+a {
+  text-decoration: none;
+ }
+    
